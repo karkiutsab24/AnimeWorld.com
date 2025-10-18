@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Player Web</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      background: linear-gradient(135deg, #0f1724, #1e293b);
+      color: #e2e8f0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu button {
+      background: transparent;
+      color: #e2e8f0;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .menu button:hover {
+      color: #38bdf8;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .thumbnail {
+      width: 400px;
+      height: 250px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .thumbnail:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: scale(1.03);
+    }
+
+    .player-container {
+      display: none;
+      width: 90%;
+      max-width: 1100px;
+      height: 70vh;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .player-container.show {
+      display: flex;
+    }
+
+    .anime-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .anime-info h2 {
+      margin: 0;
+      color: #38bdf8;
+      font-size: 1.8rem;
+    }
+
+    .anime-info p {
+      color: #94a3b8;
+      max-width: 400px;
+      line-height: 1.5;
+    }
+
+    .video-area {
+      flex: 1.5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background: black;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AnimeWorld</div>
+    <div class="menu">
+      <button>Home</button>
+      <button>Watch</button>
+      <button>About</button>
+      <button>Contact</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="thumbnail" class="thumbnail">Click to Play Anime</div>
+
+    <div id="playerContainer" class="player-container">
+      <div class="anime-info">
+        <h2>Anime Title Here</h2>
+        <p>
+          Add the description of your anime here. It will appear beside the video player when clicked.
+        </p>
+      </div>
+      <div class="video-area">
+        <!-- Add your video later -->
+        <video id="animeVideo" controls>
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const thumbnail = document.getElementById('thumbnail');
+    const playerContainer = document.getElementById('playerContainer');
+
+    thumbnail.addEventListener('click', () => {
+      thumbnail.style.display = 'none';
+      playerContainer.classList.add('show');
+    });
+  </script>
+</body>
+</html>
